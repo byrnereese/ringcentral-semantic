@@ -2,7 +2,9 @@ This project is a PROOF OF CONCEPT and WORK IN PROGRESS and SHOULD NOT be used f
 
 ## Overview
 
-This project provides a node module that extends the [ringcentral-js-concise](https://github.com/tylerlong/ringcentral-js-concise) module by providing a more semantic interface, which by default is highly light weight and abstract. Here are two functionally equivalent code samples using the two modules:
+This project provides a node module that extends the [ringcentral-js-concise](https://github.com/tylerlong/ringcentral-js-concise) module with a more semantic interface. By default, the cocise module, while light-weight, is very abstract and hard for beginners to use. This module hopes to make the vastness of the RingCentral API more accessible to beginners.
+
+To illustrate, here are two functionally equivalent code samples using the two modules:
 
 ### Sending an SMS using ringcentral-js-concise
 
