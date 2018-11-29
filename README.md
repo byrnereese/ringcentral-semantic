@@ -32,6 +32,27 @@ Hopefully, what you can see is a slightly more intuitive interface, one that exp
 
 ## Usage
 
+### Path Parameters
+
+All of RingCentral's APIs can be scoped to a specific organization and user by specifying the corresponding account and/or extension in the endpoint's path. You can set these path parameters by passing in the following parameters into each method supported by this SDK:
+
+* `accountId`
+* `extension`
+
+If these parameters are omitted, they will both default to `~`, which refers to the account/extension of the currently authed user.
+
+**Example**
+
+```javascript
+client.sendSMS({
+    accountId: '+12125558373',
+    extension: '110',
+    from: { phoneNumber: '+12054387726' },
+    to:   [{ phoneNumber: '+15105553204'}],
+    text:  'This is a test SMS.'
+})
+```
+
 ### Request Parameters
 
 Each method supported by this library takes as input an associative array of request parameters. For all methods, developers are free to use the raw input format of the RingCentral API. In some circumstances however, this SDK will accept simpler formats so that code can be easier to read and input by the developer. For example, here is how one might compose a request to send an SMS using the raw input format:
