@@ -1,10 +1,10 @@
 var RingCentral = require('ringcentral-js-concise').default
 
 const RC_URLS = {
-    SMS:          `/restapi/v1.0/account/{0}/extension/{1}/sms`,
-    MESSAGE_LIST: `/restapi/v1.0/account/{0}/extension/{1}/message-store`,
-    RING_OUT:     `/restapi/v1.0/account/{0}/extension/{1}/ring-out`,
-    CONTACT_LIST: "/restapi/v1.0/account/{0}/extension/{1}/address-book/contact",
+    SMS:      `/restapi/v1.0/account/{0}/extension/{1}/sms`,
+    MESSAGES: `/restapi/v1.0/account/{0}/extension/{1}/message-store`,
+    RING_OUT: `/restapi/v1.0/account/{0}/extension/{1}/ring-out`,
+    CONTACTS: "/restapi/v1.0/account/{0}/extension/{1}/address-book/contact",
 };
 
 // FIXME: come up with a standard way to force request input to conform to RingCentral verbose version. 
@@ -60,12 +60,20 @@ RingCentral.prototype.sendSMS = function ( params ) {
  * This method accepts the default request parameter struct.
  */
 RingCentral.prototype.getMessageList = function ( params ) {
-    let URI = generate_rc_uri( RC_URLS.MESSAGE_LIST, params );
+    let URI = generate_rc_uri( RC_URLS.MESSAGES, params );
     return this.get( URI, params )
 }
 RingCentral.prototype.getContactList = function ( params ) {
-    let URI = generate_rc_uri( RC_URLS.CONTACT_LIST, params );
+    let URI = generate_rc_uri( RC_URLS.CONTACTS, params );
     return this.get( URI, params )
+}
+RingCentral.prototype.createContact = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CONTACTS, params );
+    return this.post( URI, params )
+}
+RingCentral.prototype.getContact = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CONTACTS + '/' + params['id'], params );
+    return this.get( URI, {} )
 }
 RingCentral.prototype.ringOut = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.RING_OUT, params );
@@ -84,7 +92,6 @@ RingCentral.prototype.ringOut = function ( params ) {
 	params.callerId = { phoneNumber: params.callerId }
 	delete params.callerId
     }
-    console.log( "Request params: " + JSON.stringify( params, null, 4 ) );
     return this.post( URI, params );
 }
 module.exports.RingCentral = RingCentral

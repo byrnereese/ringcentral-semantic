@@ -95,6 +95,28 @@ client.sendSMS({
 
 # Supported Methods
 
+## Contacts
+
+### createContact
+
+Creates a new contact in the associated account. This method has no simplified syntax.
+
+### getContact
+
+Returns a single contact with the specified id. 
+
+**Simplified Syntax**
+
+```javascript
+client.getContact({
+    id:   '736483937493'
+});
+```
+
+### getContactList
+
+Returns a list of contacts associated the current account. This method has no simplified syntax.
+
 ## Messages
 
 ### sendSMS
