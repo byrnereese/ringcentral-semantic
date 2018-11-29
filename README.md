@@ -10,7 +10,7 @@ This project provides a node module that extends the [ringcentral-js-concise](ht
 const r = client.post('/restapi/v1.0/account/~/extension/~/sms', {
     from: { phoneNumber: '+12054387726' },
     to:  [{ phoneNumber: '+15108723204' }],
-    text: 'This is a test SMS.''
+    text: 'This is a test SMS.'
 });
 ```
 
