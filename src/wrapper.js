@@ -24,10 +24,6 @@ RingCentral.prototype.sendSMS = function ( params ) {
 	params.to = [{ phoneNumber: params.receiver }]
 	delete params.receiver
     }
-    if ( typeof params.message === 'string' ) {
-	params.text = params.message
-	delete params.message
-    }
     return this.post( RC_URLS.SMS, params )
 }
 /*

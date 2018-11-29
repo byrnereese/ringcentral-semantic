@@ -22,7 +22,7 @@ describe('RingCentral: Sending an SMS', function () {
 	client.sendSMS({
 	    sender:   process.env.RINGCENTRAL_USERNAME,
 	    receiver: process.env.RINGCENTRAL_TEST_1_RECIPIENT,
-	    message:  'This is a test SMS sent by the ringcentral-sementic node module'
+	    text:     'This is a test SMS sent by the ringcentral-sementic node module'
 	}).then( function( r ) {
 	    expect( r.data['id'] ).to.exist;
 	    expect( r.data['conversationId'] ).to.exist;
