@@ -95,6 +95,22 @@ client.sendSMS({
 
 # Supported Methods
 
+## Call Log
+
+### getUserCallLog
+
+### deleteUserCallLog
+
+### getUserCallLogRecord
+
+### getUserActiveCalls
+
+### getCompanyCallLog
+
+### getCompanyCallLogRecord
+
+### getCompanyActiveCall
+
 ## Contacts
 
 ### createContact
@@ -129,6 +145,10 @@ client.getContact({
 ### getContactList
 
 Returns a list of contacts associated the current account. This method has no simplified syntax.
+
+### getExtensionList
+
+Returns a list of extensions associated with the given account. See "Path Parameters" above for how to scope this call to a given account and/or extension. 
 
 ## Messages
 

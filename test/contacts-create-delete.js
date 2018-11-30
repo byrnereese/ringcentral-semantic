@@ -10,7 +10,7 @@ const client = new RC.RingCentral(process.env.RINGCENTRAL_CLIENTID,
 				  process.env.RINGCENTRAL_CLIENTSECRET,
 				  process.env.RINGCENTRAL_SERVER )
 
-describe('RingCentral: Creating contacts', function () {
+describe('RingCentral: Creating, updating and deleting contacts', function () {
     it('should successfully authorize a client', function (done) {
 	client.authorize({
 	    username:  process.env.RINGCENTRAL_USERNAME,

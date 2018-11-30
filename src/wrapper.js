@@ -1,10 +1,16 @@
 var RingCentral = require('ringcentral-js-concise').default
 
 const RC_URLS = {
-    SMS:      `/restapi/v1.0/account/{0}/extension/{1}/sms`,
-    MESSAGES: `/restapi/v1.0/account/{0}/extension/{1}/message-store`,
-    RING_OUT: `/restapi/v1.0/account/{0}/extension/{1}/ring-out`,
-    CONTACTS: "/restapi/v1.0/account/{0}/extension/{1}/address-book/contact",
+    SMS:       "/restapi/v1.0/account/{0}/extension/{1}/sms",
+    MESSAGES:  "/restapi/v1.0/account/{0}/extension/{1}/message-store",
+    RING_OUT:  "/restapi/v1.0/account/{0}/extension/{1}/ring-out",
+    CONTACTS:  "/restapi/v1.0/account/{0}/extension/{1}/address-book/contact",
+    PHONE_NUM: "/restapi/v1.0/account/{0}/extension/{1}/phone-number",
+    CALL_LOG:  "/restapi/v1.0/account/{0}/extension/{1}/call-log",
+    ACTIVE_CALLS:    "/restapi/v1.0/account/{0}/extension/{1}/active-calls",
+    CO_CALL_LOG:     "/restapi/v1.0/account/{0}/call-log",
+    CO_ACTIVE_CALLS: "/restapi/v1.0/account/{0}/active-calls",
+    CALL_RECORDING:  "/restapi/v1.0/account/{0}/recording",
 };
 
 // FIXME: come up with a standard way to force request input to conform to RingCentral verbose version. 
@@ -38,7 +44,7 @@ function generate_rc_uri( uri, params ) {
 }
 
 /*
- * This method changes in the request options structure to simplify it. 
+ * Messaging
  */
 RingCentral.prototype.sendSMS = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.SMS, params );
@@ -56,13 +62,14 @@ RingCentral.prototype.sendSMS = function ( params ) {
     }
     return this.post( URI, params )
 }
-/*
- * This method accepts the default request parameter struct.
- */
 RingCentral.prototype.getMessageList = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.MESSAGES, params );
     return this.get( URI, params )
 }
+
+/*
+ * Contacts
+ */
 RingCentral.prototype.getContactList = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.CONTACTS, params );
     return this.get( URI, params )
@@ -83,6 +90,58 @@ RingCentral.prototype.updateContact = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.CONTACTS + '/' + params['id'], params );
     return this.put( URI, params )
 }
+RingCentral.prototype.getExtensionList = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.PHONE_NUM, params );
+    return this.get( URI, params )
+}
+
+/*
+ * Call Log
+ */
+RingCentral.prototype.getUserCallLog = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CALL_LOG, params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.deleteUserCallLog = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CALL_LOG, params );
+    return this.delete( URI, params )
+}
+// FIXME: support retrieving multiple records
+RingCentral.prototype.getUserCallLogRecord = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CALL_LOG + '/' + params['id'], params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.getUserActiveCalls = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.ACTIVE_CALLS, params );
+    return this.get( URI, params )
+}
+
+RingCentral.prototype.getCompanyCallLog = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CO_CALL_LOG, params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.getCompanyCallLogRecord = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CO_CALL_LOG + '/' + params['id'], params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.getCompanyActiveCalls = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CO_ACTIVE_CALLS, params );
+    return this.get( URI, params )
+}
+
+RingCentral.prototype.getCallRecording = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CALL_RECORDING + '/' + params['id'], params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.getCallRecordingData = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CALL_RECORDING + '/' + params['id'] + '/content', params );
+    return this.get( URI, params )
+}
+
+
+/*
+ * Voice
+ */
 RingCentral.prototype.ringOut = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.RING_OUT, params );
     // FIXME: do not modify array, create a copy
@@ -102,4 +161,5 @@ RingCentral.prototype.ringOut = function ( params ) {
     }
     return this.post( URI, params );
 }
+
 module.exports.RingCentral = RingCentral
