@@ -55,7 +55,13 @@ client.sendSMS({
 
 ### Request Parameters
 
-Each method supported by this library takes as input an associative array of request parameters. For all methods, developers are free to use the raw input format of the RingCentral API. In some circumstances however, this SDK will accept simpler formats so that code can be easier to read and input by the developer. For example, here is how one might compose a request to send an SMS using the raw input format:
+Each method supported by this library takes as input an associative array of request parameters. For all methods, developers are free to use the raw input format of the RingCentral API (as documented in [RingCentral's API Explorer](https://developer.ringcentral.com/api-reference)).
+
+In some circumstances however, this SDK will accept simpler formats so that code can be easier to read and input by the developer. In these circumstances, the method documented below will highlight a "Simplified Syntax" one can utilize.
+
+To illustrate, let's look at how one might compose a request to send an SMS using the raw input format, and the simplified format. 
+
+**Using the Raw Input Format**
 
 ```javascript
 client.sendSMS({
@@ -65,7 +71,7 @@ client.sendSMS({
 })
 ```
 
-Here is the same call, using a simpler format:
+**Using the Simplified Syntax:**
 
 ```javascript
 client.sendSMS({
@@ -87,7 +93,11 @@ client.deleteContact({ id: '736483937493' })
 
 ### Accessing Response Data and Handling Exceptions
 
-This library utilizes ES6 asynchronous methods. Each method returns a promise, to which you can attach `then`, `catch` and `finally` blocks. For example:
+This library utilizes ES6 asynchronous methods. Each method returns a promise, to which you can attach `then`, `catch` and `finally` blocks.
+
+The `then` block is called when the method returns successfully, and is passed the [axios response object](https://www.npmjs.com/package/axios). This is how you can access the data returned by RingCentral.
+
+For example:
 
 ```javascript
 client.sendSMS({
