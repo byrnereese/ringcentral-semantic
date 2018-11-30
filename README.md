@@ -75,7 +75,17 @@ client.sendSMS({
 })
 ```
 
-### Full Example: Processing the Response
+### Getting, Updating and Deleting Records
+
+When one needs to get, update or delete a specific record via id, this is done by passing in an `id` parameter in the array of request parameters for the corresponding method. For example:
+
+```javascript
+client.updateContact({ id: '736483937493', email: 'newemail@example.com' })
+client.getContact({ id: '736483937493' })
+client.deleteContact({ id: '736483937493' })
+```
+
+### Accessing Response Data and Handling Exceptions
 
 This library utilizes ES6 asynchronous methods. Each method returns a promise, to which you can attach `then`, `catch` and `finally` blocks. For example:
 
@@ -119,12 +129,12 @@ Creates a new contact in the associated account. This method has no simplified s
 
 ### updateContact
 
-Updates a single contact with the specified id. Developers need only specify the contact properties they wish to update. 
+Updates a single contact with the specified id. Developers need only specify the contact properties they wish to update. See "Getting, Updating and Deleting Records."
 
 **Simplified Syntax**
 
 ```javascript
-client.getContact({
+client.updateContact({
     id:   '736483937493',
     email: 'newemail@example.com'
 })
@@ -132,15 +142,7 @@ client.getContact({
 
 ### getContact
 
-Returns a single contact with the specified id. *Note: you can only fetch by id.*
-
-**Simplified Syntax**
-
-```javascript
-client.getContact({
-    id:   '736483937493'
-})
-```
+Returns a single contact with the specified id. See "Getting, Updating and Deleting Records."
 
 ### getContactList
 
@@ -185,6 +187,10 @@ client.ringOut({
     callerId: '+15105555555'
 })
 ```
+
+### cancelRingOut
+
+### getRingOutStatus
 
 # License
 

@@ -161,5 +161,12 @@ RingCentral.prototype.ringOut = function ( params ) {
     }
     return this.post( URI, params );
 }
-
+RingCentral.prototype.getRingOutStatus = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.RING_OUT + '/' + params['id'], params );
+    return this.get( URI, params )
+}
+RingCentral.prototype.cancelRingOut = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.RING_OUT + '/' + params['id'], params );
+    return this.delete( URI, params )
+}
 module.exports.RingCentral = RingCentral
