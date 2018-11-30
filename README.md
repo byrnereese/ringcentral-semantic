@@ -1,5 +1,3 @@
-This project is a PROOF OF CONCEPT and WORK IN PROGRESS and SHOULD NOT be used for production use. 
-
 ## Overview
 
 This project provides a node module that extends the [ringcentral-js-concise](https://github.com/tylerlong/ringcentral-js-concise) module with a more semantic interface. The concise module is optimized for being light-weight. As a result, it tends to be more abstract, and harder to use for beginners.
@@ -7,6 +5,15 @@ This project provides a node module that extends the [ringcentral-js-concise](ht
 This module hopes to make the vastness of the RingCentral API more accessible to beginners.
 
 To illustrate, here are two functionally equivalent code samples using the two modules:
+
+### Other Node Modules to Consider
+
+This is "yet another ringcentral npm" developed as a proof-of-concept to offer developers a simpler interface over the the `ringcentral-js-concise` library. Developers have a number of choices when choosing a RingCentral npm, here are some of them:
+
+* [ringcentral](https://www.npmjs.com/package/ringcentral) - The official javascript library maintained by RingCentral.
+* [ringcentral-client](https://www.npmjs.com/package/ringcentral-client) - In part, inspiration for this module, as it provides a more explicit (a.k.a. "semantic") interface for supported methods. etc. The author had difficulty using this module however (which could be entirely his own darn fault). 
+* [ringcentral-js-concise](https://www.npmjs.com/package/ringcentral-js-concise) - An npm optimized for size. It is effective, but more abstract. The author had a personal affinity for this module. 
+* [ringcentral-semantic](https://www.npmjs.com/package/ringcentral-semantic) - This npm, a wrapper around `ringcentral-js-concise` that attempts to combine they best parts of the modules above. 
 
 ### Sending an SMS using ringcentral-js-concise
 
