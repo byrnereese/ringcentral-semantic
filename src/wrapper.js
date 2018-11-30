@@ -75,6 +75,14 @@ RingCentral.prototype.getContact = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.CONTACTS + '/' + params['id'], params );
     return this.get( URI, {} )
 }
+RingCentral.prototype.deleteContact = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CONTACTS + '/' + params['id'], params );
+    return this.delete( URI, {} )
+}
+RingCentral.prototype.updateContact = function ( params ) {
+    let URI = generate_rc_uri( RC_URLS.CONTACTS + '/' + params['id'], params );
+    return this.put( URI, params )
+}
 RingCentral.prototype.ringOut = function ( params ) {
     let URI = generate_rc_uri( RC_URLS.RING_OUT, params );
     // FIXME: do not modify array, create a copy

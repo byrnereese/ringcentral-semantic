@@ -11,7 +11,7 @@ To illustrate, here are two functionally equivalent code samples using the two m
 ### Sending an SMS using ringcentral-js-concise
 
 ```javascript
-const r = client.post('/restapi/v1.0/account/~/extension/~/sms', {
+const promise = client.post('/restapi/v1.0/account/~/extension/~/sms', {
     from: { phoneNumber: '+12054387726' },
     to:  [{ phoneNumber: '+15105553204' }],
     text: 'This is a test SMS.'
@@ -21,7 +21,7 @@ const r = client.post('/restapi/v1.0/account/~/extension/~/sms', {
 ### Sending an SMS using ringcentral-semantic
 
 ```javascript
-const r = client.sendSMS({
+const promise = client.sendSMS({
     sender:   '+12054387726',
     receiver: '+15105553204',
     text:     'This is a test SMS.'
@@ -101,16 +101,29 @@ client.sendSMS({
 
 Creates a new contact in the associated account. This method has no simplified syntax.
 
+### updateContact
+
+Updates a single contact with the specified id. Developers need only specify the contact properties they wish to update. 
+
+**Simplified Syntax**
+
+```javascript
+client.getContact({
+    id:   '736483937493',
+    email: 'newemail@example.com'
+})
+```
+
 ### getContact
 
-Returns a single contact with the specified id. 
+Returns a single contact with the specified id. *Note: you can only fetch by id.*
 
 **Simplified Syntax**
 
 ```javascript
 client.getContact({
     id:   '736483937493'
-});
+})
 ```
 
 ### getContactList
@@ -130,7 +143,7 @@ client.sendSMS({
     sender:   '+12054387726',
     receiver: '+15105553204',
     text:  'This is a test SMS.'
-});
+})
 ```
 
 ### getMessageList
@@ -150,7 +163,7 @@ client.ringOut({
     caller:   '+15105553204',
     receiver: '+12054387726',
     callerId: '+15105555555'
-});
+})
 ```
 
 # License
