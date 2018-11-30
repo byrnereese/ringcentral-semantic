@@ -1,10 +1,10 @@
 {
    "name": "ringcentral-semantic",
    "description": "A wrapper around ringcentral-js-concise to make the SDK more readable",
-   "repository": "git@github.com:byrnereese/ringcentral-js-semantic.git",
+   "repository": "git@github.com:byrnereese/ringcentral-semantic.git",
    "author": "Byrne Reese <byrne@majordojo.com>",
    "license": "MIT",
-   "version": "0.1.0",
+   "version": "0.1.1",
    "main": "dist/wrapper.js",
    "module": "src/wrapper.js",
    "scripts": {
